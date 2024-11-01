@@ -945,7 +945,8 @@
 .video-background {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: calc(100vh - 80px); /* Subtract navbar height */
+    margin-top: 80px; /* Add navbar height as margin */
     overflow: hidden;
 }
 
@@ -959,7 +960,7 @@
     height: auto;
     z-index: 0;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* Ensures the video covers the entire container */
+    object-fit: cover;
 }
 
 .video-overlay {
@@ -1240,12 +1241,21 @@ html {
 }
 
 .service-item {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
 }
 
 .service-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.service-item img {
+    height: 200px; /* Adjust this value to maintain consistent image heights */
+    object-fit: cover;
+}
+
+.service-item .p-4 {
+    background: white;
 }
 
 .badge {
@@ -1273,4 +1283,110 @@ section {
 /* Optional: Smooth scroll for entire page */
 html {
     scroll-behavior: smooth;
+}
+
+/* Ensure navbar stays white */
+.navbar {
+    background: #ffffff !important;
+    z-index: 1000;
+}
+
+/* Navbar text gradient by default */
+.navbar-nav .nav-link {
+    background: linear-gradient(90deg, #006837 0%, #8bc349 51%, #006837 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    transition: 0.5s;
+}
+
+/* Optional: Different style for active/hover state */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-position: right center;
+}
+
+/* Make sure the navbar brand (Cyberlific) also has gradient */
+.navbar-brand h1 {
+    background: linear-gradient(90deg, #006837 0%, #8bc349 51%, #006837 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    transition: 0.5s;
+}
+
+/* Keep the Get Started button with its existing style */
+.btn-primary {
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #006837 0%, #8bc349 51%, #006837 100%);
+    border: none;
+    transition: 0.5s;
+}
+
+.btn-primary:hover {
+    background-position: right center;
+}
+
+/* Gradient text for card headings */
+.gradient-text {
+    background: linear-gradient(90deg, #006837 0%, #8bc349 51%, #006837 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+}
+
+/* Image zoom effect */
+.image-wrapper {
+    overflow: hidden;
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.service-item img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Card styling */
+.service-item {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    background: white;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Badge styling */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 1em;
+}
+
+/* Collapse transition */
+.collapse {
+    transition: all 0.3s ease;
+}
+
+.service-item .image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.service-item .image-wrapper img {
+    transition: 0.5s;
+}
+
+.service-item:hover .image-wrapper img {
+    transform: scale(1.2);
 }
